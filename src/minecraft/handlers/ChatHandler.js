@@ -18,19 +18,19 @@ class StateHandler extends EventHandler {
 
 	  handleLocalCommand(player, message) {
 	    if (!message.startsWith('!')) {
-	    this.bot.chat(`command is not done yet, the dev is kinda stupid ${message}`)     
+	    //this.bot.chat(`command is not done yet, the dev is kinda stupid ${message}`)     
   
 	      return false
 	    }
 
-	    this.bot.chat('command is not done yet, the dev is kinda stupid')       
+	    //this.bot.chat('command is not done yet, the dev is kinda stupid')       
 
 
 	    let args = message.slice('!'.length).trim().split(/ +/)
 	    let commandName = args.shift().toLowerCase()
 
 	    if (commandName === 'warpout') {
-	        this.bot.chat('command is not done yet, the dev is kinda stupid')       
+	        this.bot.chat('/gc command is not done yet, the dev is kinda stupid')       
 			return true
 	    }
 
@@ -43,7 +43,7 @@ class StateHandler extends EventHandler {
 		if (this.online===false) {
 
 			if (message.includes('warpout')) {
-				this.bot.chat('command is not done yet, the dev is kinda stupid')
+				//this.bot.chat('command is not done yet, the dev is kinda stupid')
 			}
 
 			if (message.includes('test123')) {
@@ -67,15 +67,15 @@ class StateHandler extends EventHandler {
 
 			const playerMessage2 = parts2.join(':').trim()
 			if (notBot) {
-				this.bot.chat('command is not done yet, the dev is kinda stupid')
+				//this.bot.chat('command is not done yet, the dev is kinda stupid')
 				if (playerMessage2.length == 0 || this.handleLocalCommand(username2, playerMessage2)) {
 					return
 				}
 			}
 			else {
-				this.bot.chat('command is not done yet, the dev is kinda stupid 2')
+				//this.bot.chat('command is not done yet, the dev is kinda stupid 2')
 			}
-			this.bot.chat('command is not done yet, the dev is kinda stupid 2')
+			//this.bot.chat('command is not done yet, the dev is kinda stupid 2')
 
 
 			if (this.isLobbyJoinMessage(message)) {
