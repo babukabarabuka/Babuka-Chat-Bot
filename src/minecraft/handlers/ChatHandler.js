@@ -80,7 +80,7 @@ class StateHandler extends EventHandler {
 			else if (this.isJoinPartyMessage(message)) {
 				this.bot.chat('/p warp')
 				//setTimeout(() => this.sendDisbandMessage(), 100)
-				var end = Date.now() + 5000
+				var end = Date.now() + 50
 				while (Date.now() < end) {}
 				sendDisbandMessage()
 
