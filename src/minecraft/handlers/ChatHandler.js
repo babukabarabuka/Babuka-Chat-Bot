@@ -44,7 +44,7 @@ class StateHandler extends EventHandler {
 	  }
 
 	isPartyNotAllowedMessage(message) {
-		return !message.includes(':') && message.includes('You cannot invite that player.')
+		return message.toLowerCase().includes('You cannot invite that player.'.toLowerCase())
 	}
 
 	onMessage(event) {
