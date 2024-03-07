@@ -5,7 +5,9 @@ class StateHandler extends EventHandler {
 		
 		this.minecraft = minecraft
 		this.command = command
+
 		this.awaitingPartyVictim = false
+		this.timeWarped = 0
 	}
 
 	registerEvents(bot) {
@@ -35,10 +37,12 @@ class StateHandler extends EventHandler {
 	    	}
 
 	    	this.bot.chat(`/party invite ${args[0]}`)
+	    	this.timeWarped = Date.now()
 	    	this.awaitingPartyVictim = true
-	    	setTimeout(function() {
-  			this.bot.chat(`/gc invited ${args[0]}`)
-			}, 500);
+
+	    	while(Date.now()-timeWarped < 100) {
+	    		this.bot.chat(`/gc invited ${args[0]}`)
+	    	}
 
 			return true
 	    }
