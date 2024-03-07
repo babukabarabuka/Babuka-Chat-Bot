@@ -4,16 +4,16 @@
     "port": 25565
   },
   "minecraft": {
-    "username": "yourUsername",
-    "password": "yourPassword",
-    "lobbyHolder": "ignUsername",
+    "username": "gablobus@gmail.com",
+    "password": "",
+    "lobbyHolder": "",
     "accountType": "microsoft"
   },
   "discord": {
-    "token": "discordBotToken",
-    "channel": "channelId",
-    "commandRole": "roleId",
-    "ownerId": "ownerId",
+    "token": "",
+    "channel": "1213216500618367038",
+    "commandRole": "1212849488427749397",
+    "ownerId": "515442496453738506",
     "prefix": "!",
     "messageMode": "bot",
     "autoAccept": false,
