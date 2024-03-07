@@ -60,7 +60,7 @@ class StateHandler extends EventHandler {
 
 	    	setTimeout((param1) => {param1.chat('/skyblock')}, 200, this.bot)
 
-	    	setTimeout((param1, param2) => {param1.chat(param2)}, 400, this.bot, `/gc Attempting to warp out ${this.targetName} ` + this.getRandomFruit())
+	    	setTimeout((param1, param2) => {param1.chat(param2)}, 400, this.bot, `/gc Attempting to warp out ${this.targetName}. ` + this.getRandomFruit())
 	    	//setTimeout((param1, param2) => {param1.chat(param2)}, 400, this.bot, `/gc Attempting to warp out user...`)
 
 
@@ -85,6 +85,12 @@ class StateHandler extends EventHandler {
 	isPartyExpiredMessage(message) {
 		return message.includes('The party invite to') && message.includes('has expired.') && !message.includes(':')
 	}
+	isNoPlayerFoundMessage(message) {
+		return message.includes('Couldn\'t find a player with that name!') && !message.includes(':')
+	}
+	isOfflinePlayerMessage(message) {
+		return message.includes('You cannot invite that player since they\'re not online.') && !message.includes(':')
+	}
 
 	//function testFunc = (firstParam) => {
 	//	firstParam.chat('/p disband')
@@ -96,18 +102,30 @@ class StateHandler extends EventHandler {
 		if (this.online===false) {
 
 			if (message.includes('test123')) {
-					this.bot.chat('/gc sorry for all the fuss i am making ' + this.getRandomFruit())
+					this.bot.chat('/gc sorry for all the fuss i am making. ' + this.getRandomFruit())
 			}
 			if (this.isPartyNotAllowedMessage(message)) {
-				this.bot.chat('/gc cannot invite that player ' + this.getRandomFruit())
+				this.bot.chat('/gc Cannot invite that player, they have turned party invites off. ' + this.getRandomFruit())
 				setTimeout((param1) => {param1.chat('/lobby')}, 200, this.bot)
 				this.awaitingPartyVictim = false
 			}
 			if (this.isPartyExpiredMessage(message)) {
-				this.bot.chat(`/gc Couldn't warp out ${this.targetName}, they didn't join the party! ` + this.getRandomFruit())
+				this.bot.chat(`/gc Couldn't warp out ${this.targetName}, they didn't join the party. ` + this.getRandomFruit())
 				setTimeout((param1) => {param1.chat('/lobby')}, 200, this.bot)
 				this.awaitingPartyVictim = false
 			}
+			if (this.isNoPlayerFoundMessage(message)) {
+				this.bot.chat(`/gc Couldn't find a player named ${this.targetName}. ` + this.getRandomFruit())
+				setTimeout((param1) => {param1.chat('/lobby')}, 200, this.bot)
+				this.awaitingPartyVictim = false
+			}
+			if (this.isOfflinePlayerMessage(message)) {
+				this.bot.chat(`/gc Couldn't warp out ${this.targetName}, they're offline. ` + this.getRandomFruit())
+				setTimeout((param1) => {param1.chat('/lobby')}, 200, this.bot)
+				this.awaitingPartyVictim = false
+			}
+
+
 			if (this.isJoinPartyMessage(message)) {
 				this.bot.chat('/p warp')
 
