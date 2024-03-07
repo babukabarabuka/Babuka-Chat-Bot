@@ -124,7 +124,7 @@ class StateHandler extends EventHandler {
 				//setTimeout((param1, param2) => {param1.chat(param2)}, 800, this.bot, `/gc Couldn't warp out ${this.targetName}, they're offline. ` + this.getRandomFruit())
 				
 				this.bot.chat(`/gc Couldn't warp out ${this.targetName}, they're offline. ` + this.getRandomFruit())
-				setTimeout((param1) => {param1.chat('/lobby')}, 2000, this.bot)
+				setTimeout((param1) => {param1.chat('/lobby')}, 100, this.bot)
 
 				//setTimeout((param1, param2) => {param1.chat(param2)}, 500, this.bot, `/gc Can't warp out ${this.targetName}, they're offline. ` + this.getRandomFruit())
 
