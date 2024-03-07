@@ -7,8 +7,9 @@ class StateHandler extends EventHandler {
 		this.command = command
 
 		this.awaitingPartyVictim = false
-		this.timeWarped = 0
-		this.needsToDisband = false
+		this.targetName = ''
+		this.dictionary = 'Watermelon Grapefruit Lemon Banana Apple Kiwi Pomegranate Cherry Strawberry Peach Satsuma'.split(' ')
+		this.fruitIndex = 0;
 	}
 
 	registerEvents(bot) {
@@ -18,6 +19,17 @@ class StateHandler extends EventHandler {
 
 		this.bot.on('message', (...args) => this.onMessage(...args))
 
+	}
+
+	getRandomInt(max) {
+	  return Math.floor(Math.random() * max);
+	}
+	getRandomFruit() {
+		this.fruitIndex ++
+		if (this.fruitIndex >= this.dictionary.length) {
+			this.fruitIndex = 0
+		}
+		return this.dictionary[this.fruitIndex]
 	}
 
 	  handleLocalCommand(player, message) {
@@ -32,22 +44,24 @@ class StateHandler extends EventHandler {
 	        //this.bot.chat('/gc command is not done yet, the dev is kinda stupid')       
 			//this.bot.chat(`/gc ${args[0]}`)
 			if (args.length === 2 && args[1].includes('reset')) {
-				this.bot.chat('/gc You can warpout another player now')
+				this.bot.chat('/gc You can warpout another player now ' + this.getRandomFruit())
 				this.awaitingPartyVictim = false
 				return true
 			}
 
 	    	if (this.awaitingPartyVictim) {
-	    		this.bot.chat('/gc Already waiting to warp someone out!')
+	    		this.bot.chat('/gc Already waiting to warp someone out! ' + this.getRandomFruit())
 	    		return true
 	    	}
 
-	    	this.bot.chat(`/party invite ${args[0]}`)
+	    	this.targetName = args[0]
+
+	    	this.bot.chat(`/party invite ${targetName}`)
 
 	    	setTimeout((param1) => {param1.chat('/skyblock')}, 200, this.bot)
 
-	    	//setTimeout((param1, param2) => {param1.chat(param2)}, 400, this.bot, `/gc Attempting to warp out ${args[0]}`)
-	    	setTimeout((param1, param2) => {param1.chat(param2)}, 400, this.bot, `/gc Attempting to warp out user...`)
+	    	setTimeout((param1, param2) => {param1.chat(param2)}, 400, this.bot, `/gc Attempting to warp out ${targetName} ` + this.getRandomFruit())
+	    	//setTimeout((param1, param2) => {param1.chat(param2)}, 400, this.bot, `/gc Attempting to warp out user...`)
 
 
 	    	this.awaitingPartyVictim = true
@@ -75,20 +89,14 @@ class StateHandler extends EventHandler {
 
 	onMessage(event) {
 		const message = event.toString().trim()
-
-		if (Date.now()-this.timeWarped > 100 && this.needsToDisband) {
-			this.sendDisbandMessage();
-			this.awaitingPartyVictim = false
-			this.needsToDisband = false
-		}
 		
 		if (this.online===false) {
 
 			if (message.includes('test123')) {
-					this.bot.chat('/gc sorry for all the fuss i am making')
+					this.bot.chat('/gc sorry for all the fuss i am making ' + this.getRandomFruit())
 			}
 			if (this.isPartyNotAllowedMessage(message)) {
-				this.bot.chat('/gc cannot invite that player')
+				this.bot.chat('/gc cannot invite that player ' + this.getRandomFruit())
 				this.awaitingPartyVictim = false
 			}
 			else if (this.isJoinPartyMessage(message)) {
@@ -96,7 +104,8 @@ class StateHandler extends EventHandler {
 
 				//this.timeWarped = Date.now()
 				//this.needsToDisband = true
-				this.awaitingPartyVictim = false
+
+				//this.awaitingPartyVictim = false
 
 
 				setTimeout((param1) => {param1.chat('/lobby')}, 200, this.bot)
@@ -104,11 +113,12 @@ class StateHandler extends EventHandler {
 				setTimeout((param1) => {param1.chat('/p warp')}, 1800, this.bot)
 				setTimeout((param1) => {param1.chat('/p disband')}, 2100, this.bot)
 
-				//setTimeout((param1, param2) => {param1.chat(param2)}, 2300, this.bot, '/gc Successfully warped out target!')
-				setTimeout((param1, param2) => {param1.chat(param2)}, 2300, this.bot, '/gc Successfully warped out user..')
+				setTimeout((param1, param2) => {param1.chat(param2)}, 2300, this.bot, `/gc Successfully warped out ${targetName}! ` + this.getRandomFruit())
+				setTimeout((param1) => {param1.awaitingPartyVictim = false}, 2320, this)
 
 
-				setTimeout((param1, param2) => {param1.chat(param2)}, 2500, this.bot, '/gc Disbanded party..')
+				//setTimeout((param1, param2) => {param1.chat(param2)}, 2300, this.bot, '/gc Successfully warped out user..')
+				//setTimeout((param1, param2) => {param1.chat(param2)}, 2500, this.bot, '/gc Disbanded party..')
 
 				//setTimeout(() => this.sendDisbandMessage(), 100)
 				//var end = Date.now() + 50
