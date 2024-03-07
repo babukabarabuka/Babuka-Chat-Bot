@@ -92,11 +92,14 @@ class StateHandler extends EventHandler {
 
 				//this.timeWarped = Date.now()
 				//this.needsToDisband = true
-
-				setTimeout((param1) => {param1.chat('/p disband')}, 200, this.bot)
 				this.awaitingPartyVictim = false
 
-				setTimeout((param1) => {param1.chat('/lobby')}, 600, this.bot)
+
+				setTimeout((param1) => {param1.chat('/lobby')}, 200, this.bot)
+
+				setTimeout((param1) => {param1.chat('/p warp')}, 600, this.bot)
+				setTimeout((param1) => {param1.chat('/p disband')}, 1000, this.bot)
+
 
 				//setTimeout(() => this.sendDisbandMessage(), 100)
 				//var end = Date.now() + 50
