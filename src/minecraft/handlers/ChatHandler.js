@@ -31,7 +31,7 @@ class StateHandler extends EventHandler {
 	    if (commandName === 'warpout' && args.length > 0) {
 	        //this.bot.chat('/gc command is not done yet, the dev is kinda stupid')       
 			//this.bot.chat(`/gc ${args[0]}`)
-			if (args.length === 2) {
+			if (args.length === 2 && args[1].includes('reset')) {
 				this.bot.chat('/gc you can warpout another player now')
 				this.awaitingPartyVictim = false
 				return true
@@ -39,12 +39,15 @@ class StateHandler extends EventHandler {
 
 	    	if (this.awaitingPartyVictim) {
 	    		this.bot.chat('/gc already waiting to warp someone out!')
-	    		return false
+	    		return true
 	    	}
 
 	    	this.bot.chat(`/party invite ${args[0]}`)
 
 	    	setTimeout((param1) => {param1.chat('/skyblock')}, 200, this.bot)
+
+	    	setTimeout((param1, param2) => {param1.chat(param2)}, 100, this.bot, `/gc Invited ${args[0]}, waiting for them to join`)
+
 
 	    	this.awaitingPartyVictim = true
 
@@ -99,6 +102,8 @@ class StateHandler extends EventHandler {
 
 				setTimeout((param1) => {param1.chat('/p warp')}, 1800, this.bot)
 				setTimeout((param1) => {param1.chat('/p disband')}, 2100, this.bot)
+
+				setTimeout((param1, param2) => {param1.chat(param2)}, 2300, this.bot, '/gc successfully warped target out!')
 
 
 				//setTimeout(() => this.sendDisbandMessage(), 100)
