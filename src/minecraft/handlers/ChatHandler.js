@@ -40,9 +40,9 @@ class StateHandler extends EventHandler {
 	    	this.timeWarped = Date.now()
 	    	this.awaitingPartyVictim = true
 
-	    	while(Date.now()-timeWarped < 100) {
-	    		this.bot.chat(`/gc invited ${args[0]}`)
-	    	}
+	    	//while(Date.now()-timeWarped < 100) {
+	    	//	this.bot.chat(`/gc invited ${args[0]}`)
+	    	//}
 
 			return true
 	    }
@@ -65,12 +65,12 @@ class StateHandler extends EventHandler {
 			if (message.includes('test123')) {
 					this.bot.chat('/gc sorry for all the fuss i am making')
 			}
-			if (this.isPartyNotAllowedMessage) {
-				this.bot.chat('/gc cant, sry')
+			if (this.isPartyNotAllowedMessage(message)) {
+				this.bot.chat('/gc cannot invite that player')
 				this.awaitingPartyVictim = false
 			}
-			else if (message.includes('You cannot invite that player.')) {
-				this.bot.chat('/gc yaay')
+			else if (this.isJoinPartyMessage(message)) {
+				this.bot.chat('/p warp')
 				this.awaitingPartyVictim = false
 			}
 
