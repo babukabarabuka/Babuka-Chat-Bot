@@ -65,7 +65,7 @@ class StateHandler extends EventHandler {
 		this.bot.chat('/p disband')
 	}
 
-	const testFunc = (firstParam) => {
+	function testFunc = (firstParam) => {
 		firstParam.chat('/p disband')
 	}
 
@@ -93,7 +93,7 @@ class StateHandler extends EventHandler {
 				//this.timeWarped = Date.now()
 				//this.needsToDisband = true
 
-				setTimeout(testFunc, 300, this.bot)
+				setTimeout((param1) => {param1.chat('/p disband')}, 300, this.bot)
 				this.awaitingPartyVictim = false
 
 				//setTimeout(() => this.sendDisbandMessage(), 100)
