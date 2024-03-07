@@ -55,6 +55,7 @@ class StateHandler extends EventHandler {
 			if (message.includes('test123')) {
 					this.bot.chat('/gc sorry for all the fuss i am making')
 			}
+
 			let parts2 = message.split(':')
 			let group2 = parts2.shift().trim()
 			let hasRank2 = group2.endsWith(']')
@@ -80,7 +81,7 @@ class StateHandler extends EventHandler {
 
 			if (this.isPartyNotAllowedMessage(message)) {
 				this.awaitingPartyVictim = false;
-				this.bot.chat('Cannot invite that player');
+				this.bot.chat('/gc Cannot invite that player');
 			}
 
 			if (this.isLobbyJoinMessage(message)) {
