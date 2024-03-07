@@ -97,8 +97,8 @@ class StateHandler extends EventHandler {
 
 				setTimeout((param1) => {param1.chat('/lobby')}, 200, this.bot)
 
-				setTimeout((param1) => {param1.chat('/p warp')}, 1200, this.bot)
-				setTimeout((param1) => {param1.chat('/p disband')}, 1500, this.bot)
+				setTimeout((param1) => {param1.chat('/p warp')}, 1800, this.bot)
+				setTimeout((param1) => {param1.chat('/p disband')}, 2100, this.bot)
 
 
 				//setTimeout(() => this.sendDisbandMessage(), 100)
