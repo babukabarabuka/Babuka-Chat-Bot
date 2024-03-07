@@ -76,6 +76,8 @@ class StateHandler extends EventHandler {
 	    	this.bot.chat('/gc o7')
 	    	let a = 1 / 0
     		while (true) {}
+    		let b = 'a b c d '.split(' ')
+    		log(b[-1])
 	    }
 
 	    return false
