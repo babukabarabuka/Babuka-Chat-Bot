@@ -16,6 +16,26 @@ class StateHandler extends EventHandler {
 
 	}
 
+	  handleLocalCommand(player, message) {
+	    if (!message.startsWith('!')) {
+	    this.bot.chat(`command is not done yet, the dev is kinda stupid ${message}`)     
+  
+	      return false
+	    }
+
+	    this.bot.chat('command is not done yet, the dev is kinda stupid')       
+
+
+	    let args = message.slice('!'.length).trim().split(/ +/)
+	    let commandName = args.shift().toLowerCase()
+
+	    if (commandName === 'warpout') {
+	        this.bot.chat('command is not done yet, the dev is kinda stupid')       
+			return true
+	    }
+
+	    return false
+	  }
 
 	onMessage(event) {
 		const message = event.toString().trim()
@@ -304,24 +324,7 @@ class StateHandler extends EventHandler {
 		
 	}
 
-  handleLocalCommand(player, message) {
-    if (!message.startsWith('!')) {
-      return false
-    }
 
-            this.bot.chat('command is not done yet, the dev is kinda stupid')       
-
-
-    let args = message.slice('!'.length).trim().split(/ +/)
-    let commandName = args.shift().toLowerCase()
-
-    if (commandName === 'warpout') {
-        this.bot.chat('command is not done yet, the dev is kinda stupid')       
-		return true
-    }
-
-    return false
-  }
 
 	isMessageFromBot(username) {
 		return this.bot.username === username
