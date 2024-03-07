@@ -96,6 +96,8 @@ class StateHandler extends EventHandler {
 				setTimeout((param1) => {param1.chat('/p disband')}, 200, this.bot)
 				this.awaitingPartyVictim = false
 
+				setTimeout((param1) => {param1.chat('/lobby')}, 600, this.bot)
+
 				//setTimeout(() => this.sendDisbandMessage(), 100)
 				//var end = Date.now() + 50
 				//while (Date.now() < end) {}
