@@ -30,6 +30,11 @@ class StateHandler extends EventHandler {
 	    if (commandName === 'warpout' && args.length > 0) {
 	        //this.bot.chat('/gc command is not done yet, the dev is kinda stupid')       
 			//this.bot.chat(`/gc ${args[0]}`)
+			if (args.length > 1) {
+				this.bot.chat('/gc you can warpout another player now')
+				this.awaitingPartyVictim = false
+				return true
+			}
 
 	    	if (this.awaitingPartyVictim) {
 	    		this.bot.chat('/gc already waiting to warp someone out!')
