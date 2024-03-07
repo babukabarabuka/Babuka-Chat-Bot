@@ -36,6 +36,9 @@ class StateHandler extends EventHandler {
 
 	    	this.bot.chat(`/party invite ${args[0]}`)
 	    	this.awaitingPartyVictim = true
+	    	setTimeout(function() {
+  			this.bot.chat(`/gc invited ${args[0]}`)
+			}, 500);
 
 			return true
 	    }
