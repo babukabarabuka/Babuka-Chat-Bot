@@ -43,6 +43,9 @@ class StateHandler extends EventHandler {
 	    	}
 
 	    	this.bot.chat(`/party invite ${args[0]}`)
+
+	    	setTimeout((param1) => {param1.chat('/skyblock')}, 200, this.bot)
+
 	    	this.awaitingPartyVictim = true
 
 	    	//while(Date.now()-timeWarped < 100) {
@@ -61,10 +64,6 @@ class StateHandler extends EventHandler {
 	isJoinPartyMessage(message) {
 	  return message.endsWith('joined the party.') && !message.includes(':');
 	}
-	sendDisbandMessage () {
-		this.bot.chat('/p disband')
-	}
-
 
 	//function testFunc = (firstParam) => {
 	//	firstParam.chat('/p disband')
@@ -94,7 +93,7 @@ class StateHandler extends EventHandler {
 				//this.timeWarped = Date.now()
 				//this.needsToDisband = true
 
-				setTimeout((param1) => {param1.chat('/p disband')}, 300, this.bot)
+				setTimeout((param1) => {param1.chat('/p disband')}, 200, this.bot)
 				this.awaitingPartyVictim = false
 
 				//setTimeout(() => this.sendDisbandMessage(), 100)
