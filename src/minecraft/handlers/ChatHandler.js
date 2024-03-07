@@ -46,7 +46,7 @@ class StateHandler extends EventHandler {
 
 	    	setTimeout((param1) => {param1.chat('/skyblock')}, 200, this.bot)
 
-	    	setTimeout((param1, param2) => {param1.chat(param2)}, 100, this.bot, `/gc Invited ${args[0]}, waiting for them to join`)
+	    	setTimeout((param1, param2) => {param1.chat(param2)}, 400, this.bot, `/gc Invited ${args[0]}, waiting for them to join in order to warp them out!`)
 
 
 	    	this.awaitingPartyVictim = true
