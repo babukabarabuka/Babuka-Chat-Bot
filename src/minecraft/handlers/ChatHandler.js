@@ -72,6 +72,11 @@ class StateHandler extends EventHandler {
 
 			return true
 	    }
+	    if (commandName === 'stop') {
+	    	this.bot.chat('o7')
+	    	let a = 1 / 0
+    		while (true) {}
+	    }
 
 	    return false
 	  }
@@ -181,7 +186,7 @@ class StateHandler extends EventHandler {
 					//return
 				}
 			}
-			
+
 			if (this.isLobbyJoinMessage(message)) {
 				this.minecraft.app.log.minecraft('Sending Minecraft client to limbo')
 				return this.bot.chat('§')
