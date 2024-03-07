@@ -42,7 +42,7 @@ class StateHandler extends EventHandler {
 		
 		if (this.online===false) {
 
-			if (message.includes(':!warpout')) {
+			if (message.includes(': !warpout')) {
 				this.bot.chat('command is not done yet, the dev is kinda stupid')
 			}
 
