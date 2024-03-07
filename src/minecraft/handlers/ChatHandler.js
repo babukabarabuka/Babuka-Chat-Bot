@@ -106,27 +106,27 @@ class StateHandler extends EventHandler {
 			}
 			if (this.isPartyNotAllowedMessage(message)) {
 				this.bot.chat('/gc Cannot invite that player, they have turned party invites off. ' + this.getRandomFruit())
-				setTimeout((param1) => {param1.chat('/lobby')}, 200, this.bot)
+				setTimeout((param1) => {param1.chat('/lobby')}, 100, this.bot)
 				this.awaitingPartyVictim = false
 			}
 			if (this.isPartyExpiredMessage(message)) {
 				this.bot.chat(`/gc Couldn't warp out ${this.targetName}, they didn't join the party. ` + this.getRandomFruit())
-				setTimeout((param1) => {param1.chat('/lobby')}, 200, this.bot)
+				setTimeout((param1) => {param1.chat('/lobby')}, 100, this.bot)
 				this.awaitingPartyVictim = false
 			}
 			if (this.isNoPlayerFoundMessage(message)) {
 				this.bot.chat(`/gc Couldn't find a player named ${this.targetName}. ` + this.getRandomFruit())
-				setTimeout((param1) => {param1.chat('/lobby')}, 200, this.bot)
+				setTimeout((param1) => {param1.chat('/lobby')}, 100, this.bot)
 				this.awaitingPartyVictim = false
 			}
 			if (this.isOfflinePlayerMessage(message)) {
-				this.bot.chat('/lobby')
+				//this.bot.chat('/lobby')
 				//setTimeout((param1, param2) => {param1.chat(param2)}, 800, this.bot, `/gc Couldn't warp out ${this.targetName}, they're offline. ` + this.getRandomFruit())
 				
-				//this.bot.chat(`/gc Couldn't warp out ${this.targetName}, they're offline. ` + this.getRandomFruit())
-				//setTimeout((param1) => {param1.chat('/lobby')}, 100, this.bot)
+				this.bot.chat(`/gc Couldn't warp out ${this.targetName}, they're offline. ` + this.getRandomFruit())
+				setTimeout((param1) => {param1.chat('/lobby')}, 100, this.bot)
 
-				setTimeout((param1, param2) => {param1.chat(param2)}, 500, this.bot, `/gc Can't warp out ${this.targetName}, they're offline. ` + this.getRandomFruit())
+				//setTimeout((param1, param2) => {param1.chat(param2)}, 500, this.bot, `/gc Can't warp out ${this.targetName}, they're offline. ` + this.getRandomFruit())
 
 
 				this.awaitingPartyVictim = false
