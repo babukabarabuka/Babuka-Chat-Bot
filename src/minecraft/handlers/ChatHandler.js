@@ -122,7 +122,7 @@ class StateHandler extends EventHandler {
 			if (this.isOfflinePlayerMessage(message)) {
 				this.bot.chat('/lobby')
 				//this.bot.chat(`/gc Couldn't warp out ${this.targetName}, they're offline. ` + this.getRandomFruit())
-				setTimeout((param1, param2) => {param1.chat(param2)}, 200, this.bot, `/gc Couldn't warp out ${this.targetName}, they're offline. ` + this.getRandomFruit())
+				setTimeout((param1, param2) => {param1.chat(param2)}, 800, this.bot, `/gc Couldn't warp out ${this.targetName}, they're offline. ` + this.getRandomFruit())
 				this.awaitingPartyVictim = false
 			}
 
