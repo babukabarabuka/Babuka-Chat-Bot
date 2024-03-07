@@ -61,6 +61,9 @@ class StateHandler extends EventHandler {
 	isJoinPartyMessage(message) {
 	  return message.endsWith('joined the party.') && !message.includes(':');
 	}
+	sendDisbandMessage () {
+		this.bot.chat('/p disband')
+	}
 
 	onMessage(event) {
 		const message = event.toString().trim()
@@ -76,7 +79,7 @@ class StateHandler extends EventHandler {
 			}
 			else if (this.isJoinPartyMessage(message)) {
 				this.bot.chat('/p warp')
-				setTimeout(() => this.bot.chat('/p disband'), 50)
+				setTimeout(() => this.sendDisbandMessage(), 100)
 				this.awaitingPartyVictim = false
 
 			}
