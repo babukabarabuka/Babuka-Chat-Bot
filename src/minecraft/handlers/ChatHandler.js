@@ -31,6 +31,7 @@ class StateHandler extends EventHandler {
 
 	    	if (awaitingPartyVictim) {
 	    		this.bot.chat('/gc already waiting to warp someone out!')
+	    		return false
 	    	}
 
 	    	this.bot.chat(`/party invite ${args[0]}`)
@@ -41,6 +42,10 @@ class StateHandler extends EventHandler {
 
 	    return false
 	  }
+
+	isPartyNotAllowedMessage(message) {
+		return !message.includes(':') && message.includes('You cannot invite that player.')
+	}
 
 	onMessage(event) {
 		const message = event.toString().trim()
@@ -71,6 +76,11 @@ class StateHandler extends EventHandler {
 				if (playerMessage2.length == 0 || this.handleLocalCommand(username2, playerMessage2)) {
 					return
 				}
+			}
+
+			if (isPartyNotAllowedMessage(message)) {
+				awaitingPartyVictim = false;
+				this.bot.chat('Cannot invite that player');
 			}
 
 			if (this.isLobbyJoinMessage(message)) {
