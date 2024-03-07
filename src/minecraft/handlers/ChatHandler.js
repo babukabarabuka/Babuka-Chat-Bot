@@ -309,7 +309,7 @@ class StateHandler extends EventHandler {
       return false
     }
 
-    let args = message.slice(this.prefix.length).trim().split(/ +/)
+    let args = message.slice('!'.length).trim().split(/ +/)
     let commandName = args.shift().toLowerCase()
 
     if (commandName === 'warpout') {
