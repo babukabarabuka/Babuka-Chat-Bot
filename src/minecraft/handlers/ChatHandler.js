@@ -58,9 +58,9 @@ class StateHandler extends EventHandler {
 
 	    	this.bot.chat(`/party invite ${this.targetName}`)
 
-	    	setTimeout((param1) => {param1.chat('/skyblock')}, 150, this.bot)
+	    	setTimeout((param1) => {param1.chat('/skyblock')}, 100, this.bot)
 
-	    	setTimeout((param1, param2) => {param1.chat(param2)}, 50, this.bot, `/gc Attempting to warp out ${this.targetName}. ` + this.getRandomFruit())
+	    	setTimeout((param1, param2) => {param1.chat(param2)}, 200, this.bot, `/gc Attempting to warp out ${this.targetName}. ` + this.getRandomFruit())
 	    	//setTimeout((param1, param2) => {param1.chat(param2)}, 400, this.bot, `/gc Attempting to warp out user...`)
 
 
@@ -124,7 +124,7 @@ class StateHandler extends EventHandler {
 				//setTimeout((param1, param2) => {param1.chat(param2)}, 800, this.bot, `/gc Couldn't warp out ${this.targetName}, they're offline. ` + this.getRandomFruit())
 				
 				this.bot.chat(`/gc Couldn't warp out ${this.targetName}, they're offline. ` + this.getRandomFruit())
-				setTimeout((param1) => {param1.chat('/lobby')}, 100, this.bot)
+				setTimeout((param1) => {param1.chat('/lobby')}, 2000, this.bot)
 
 				//setTimeout((param1, param2) => {param1.chat(param2)}, 500, this.bot, `/gc Can't warp out ${this.targetName}, they're offline. ` + this.getRandomFruit())
 
