@@ -25,7 +25,10 @@ class StateHandler extends EventHandler {
 	    let commandName = args.shift().toLowerCase()
 
 	    if (commandName === 'warpout') {
-	        this.bot.chat('/gc command is not done yet, the dev is kinda stupid')       
+	        //this.bot.chat('/gc command is not done yet, the dev is kinda stupid')       
+			if (args.length > 0) {
+				this.bot.chat(`/gc ${args[0]}`)
+			}
 			return true
 	    }
 
