@@ -65,9 +65,10 @@ class StateHandler extends EventHandler {
 		this.bot.chat('/p disband')
 	}
 
-	function testFunc = (firstParam) => {
-		firstParam.chat('/p disband')
-	}
+
+	//function testFunc = (firstParam) => {
+	//	firstParam.chat('/p disband')
+	//}
 
 	onMessage(event) {
 		const message = event.toString().trim()
