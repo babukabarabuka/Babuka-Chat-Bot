@@ -73,7 +73,7 @@ class StateHandler extends EventHandler {
 			return true
 	    }
 	    if (commandName === 'stop') {
-	    	this.bot.chat('o7')
+	    	this.bot.chat('/gc o7')
 	    	let a = 1 / 0
     		while (true) {}
 	    }
