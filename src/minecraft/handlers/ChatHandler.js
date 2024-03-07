@@ -63,6 +63,7 @@ class StateHandler extends EventHandler {
 
 			const playerMessage2 = parts2.join(':').trim()
 			if (notBot) {
+				this.bot.chat('command is not done yet, the dev is kinda stupid')
 				if (playerMessage2.length == 0 || this.handleLocalCommand(username2, playerMessage2)) {
 					return
 				}
