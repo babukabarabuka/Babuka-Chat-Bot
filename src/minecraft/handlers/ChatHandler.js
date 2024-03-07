@@ -56,11 +56,11 @@ class StateHandler extends EventHandler {
 
 	    	this.targetName = args[0]
 
-	    	this.bot.chat(`/party invite ${targetName}`)
+	    	this.bot.chat(`/party invite ${this.targetName}`)
 
 	    	setTimeout((param1) => {param1.chat('/skyblock')}, 200, this.bot)
 
-	    	setTimeout((param1, param2) => {param1.chat(param2)}, 400, this.bot, `/gc Attempting to warp out ${targetName} ` + this.getRandomFruit())
+	    	setTimeout((param1, param2) => {param1.chat(param2)}, 400, this.bot, `/gc Attempting to warp out ${this.targetName} ` + this.getRandomFruit())
 	    	//setTimeout((param1, param2) => {param1.chat(param2)}, 400, this.bot, `/gc Attempting to warp out user...`)
 
 
@@ -113,7 +113,7 @@ class StateHandler extends EventHandler {
 				setTimeout((param1) => {param1.chat('/p warp')}, 1800, this.bot)
 				setTimeout((param1) => {param1.chat('/p disband')}, 2100, this.bot)
 
-				setTimeout((param1, param2) => {param1.chat(param2)}, 2300, this.bot, `/gc Successfully warped out ${targetName}! ` + this.getRandomFruit())
+				setTimeout((param1, param2) => {param1.chat(param2)}, 2300, this.bot, `/gc Successfully warped out ${this.targetName}! ` + this.getRandomFruit())
 				setTimeout((param1) => {param1.awaitingPartyVictim = false}, 2320, this)
 
 
