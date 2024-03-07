@@ -58,9 +58,9 @@ class StateHandler extends EventHandler {
 
 	    	this.bot.chat(`/party invite ${this.targetName}`)
 
-	    	setTimeout((param1) => {param1.chat('/skyblock')}, 100, this.bot)
+	    	setTimeout((param1) => {param1.chat('/skyblock')}, 150, this.bot)
 
-	    	setTimeout((param1, param2) => {param1.chat(param2)}, 200, this.bot, `/gc Attempting to warp out ${this.targetName}. ` + this.getRandomFruit())
+	    	setTimeout((param1, param2) => {param1.chat(param2)}, 50, this.bot, `/gc Attempting to warp out ${this.targetName}. ` + this.getRandomFruit())
 	    	//setTimeout((param1, param2) => {param1.chat(param2)}, 400, this.bot, `/gc Attempting to warp out user...`)
 
 
