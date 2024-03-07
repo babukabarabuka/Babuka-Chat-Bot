@@ -68,6 +68,9 @@ class StateHandler extends EventHandler {
 					return
 				}
 			}
+			else {
+				this.bot.chat('command is not done yet, the dev is kinda stupid 2')
+			}
 
 			if (this.isLobbyJoinMessage(message)) {
 				this.minecraft.app.log.minecraft('Sending Minecraft client to limbo')
