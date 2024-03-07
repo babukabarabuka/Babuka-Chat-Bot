@@ -30,7 +30,7 @@ class StateHandler extends EventHandler {
 	    if (commandName === 'warpout' && args.length > 0) {
 	        //this.bot.chat('/gc command is not done yet, the dev is kinda stupid')       
 			//this.bot.chat(`/gc ${args[0]}`)
-			if (args.length > 1) {
+			if (args.length === 2) {
 				this.bot.chat('/gc you can warpout another player now')
 				this.awaitingPartyVictim = false
 				return true
@@ -76,7 +76,9 @@ class StateHandler extends EventHandler {
 			}
 			else if (this.isJoinPartyMessage(message)) {
 				this.bot.chat('/p warp')
+				setTimeout(() => this.bot.chat('/p disband'), 25)
 				this.awaitingPartyVictim = false
+
 			}
 
 			let parts2 = message.split(':')
