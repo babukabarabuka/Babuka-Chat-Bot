@@ -178,15 +178,10 @@ class StateHandler extends EventHandler {
 			const playerMessage2 = parts2.join(':').trim()
 			if (notBot) {
 				if (playerMessage2.length == 0 || this.handleLocalCommand(username2, playerMessage2)) {
-					return
+					//return
 				}
 			}
-
-			if (this.isPartyNotAllowedMessage(message)) {
-				this.awaitingPartyVictim = false;
-				this.bot.chat('/gc Cannot invite that player');
-			}
-
+			
 			if (this.isLobbyJoinMessage(message)) {
 				this.minecraft.app.log.minecraft('Sending Minecraft client to limbo')
 				return this.bot.chat('§')

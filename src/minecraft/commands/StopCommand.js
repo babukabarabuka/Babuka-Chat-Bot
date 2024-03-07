@@ -6,7 +6,7 @@ class StopCommand extends MinecraftCommand {
 
     this.name = 'stop'
     this.aliases = []
-    this.description = 'Crashes the Server'
+    this.description = 'Crashes the Bot'
   }
 
   onCommand(username, message) {
