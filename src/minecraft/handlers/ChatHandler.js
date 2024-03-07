@@ -309,6 +309,9 @@ class StateHandler extends EventHandler {
       return false
     }
 
+            this.bot.chat('command is not done yet, the dev is kinda stupid')       
+
+
     let args = message.slice('!'.length).trim().split(/ +/)
     let commandName = args.shift().toLowerCase()
 
