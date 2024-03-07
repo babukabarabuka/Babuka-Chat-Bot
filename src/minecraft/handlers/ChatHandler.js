@@ -42,7 +42,6 @@ class StateHandler extends EventHandler {
 	    	}
 
 	    	this.bot.chat(`/party invite ${args[0]}`)
-	    	this.timeWarped = Date.now()
 	    	this.awaitingPartyVictim = true
 
 	    	//while(Date.now()-timeWarped < 100) {
@@ -67,6 +66,11 @@ class StateHandler extends EventHandler {
 
 	onMessage(event) {
 		const message = event.toString().trim()
+
+		if (Date.now()-this.timeWarped > 100) {
+			this.sendDisbandMessage();
+			this.awaitingPartyVictim = false
+		}
 		
 		if (this.online===false) {
 
@@ -79,13 +83,10 @@ class StateHandler extends EventHandler {
 			}
 			else if (this.isJoinPartyMessage(message)) {
 				this.bot.chat('/p warp')
+				this.timeWarped = Date.now()
 				//setTimeout(() => this.sendDisbandMessage(), 100)
-				var end = Date.now() + 50
-				while (Date.now() < end) {}
-				sendDisbandMessage()
-
-				this.awaitingPartyVictim = false
-
+				//var end = Date.now() + 50
+				//while (Date.now() < end) {}
 			}
 
 			let parts2 = message.split(':')
