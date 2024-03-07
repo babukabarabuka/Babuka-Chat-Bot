@@ -77,10 +77,13 @@ class StateHandler extends EventHandler {
 	  }
 
 	isPartyNotAllowedMessage(message) {
-		return message.includes('You cannot invite that player.')
+		return message.includes('You cannot invite that player.') && !message.includes(':')
 	}
 	isJoinPartyMessage(message) {
-	  return message.endsWith('joined the party.') && !message.includes(':');
+	  return message.endsWith('joined the party.') && !message.includes(':')
+	}
+	isPartyExpiredMessage(message) {
+		return message.includes('The party invite to') && message.includes('has expired.') && !message.includes(':')
 	}
 
 	//function testFunc = (firstParam) => {
@@ -97,9 +100,15 @@ class StateHandler extends EventHandler {
 			}
 			if (this.isPartyNotAllowedMessage(message)) {
 				this.bot.chat('/gc cannot invite that player ' + this.getRandomFruit())
+				setTimeout((param1) => {param1.chat('/lobby')}, 200, this.bot)
 				this.awaitingPartyVictim = false
 			}
-			else if (this.isJoinPartyMessage(message)) {
+			if (this.isPartyExpiredMessage(message)) {
+				this.bot.chat(`/gc Couldn't warp out ${this.targetName}, they didn't join the party! ` + this.getRandomFruit())
+				setTimeout((param1) => {param1.chat('/lobby')}, 200, this.bot)
+				this.awaitingPartyVictim = false
+			}
+			if (this.isJoinPartyMessage(message)) {
 				this.bot.chat('/p warp')
 
 				//this.timeWarped = Date.now()
