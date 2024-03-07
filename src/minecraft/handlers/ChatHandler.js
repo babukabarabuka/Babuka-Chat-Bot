@@ -73,13 +73,20 @@ class StateHandler extends EventHandler {
 			return true
 	    }
 	    if (commandName === 'stop') {
-	    	this.bot.chat('/gc o7')
+	    	this.bot.chat('/gc o7, imma stop')
+	    	//process.exit()
+	    	//let a = 1 / 0
+	    	//let b = 'a b c d '.split(' ')
+    		//log(b[-1])
+    		while (true) {}
+	    }
+		if (commandName === 'reboot') {
+	    	this.bot.chat('/gc o7, imma reboot')
 	    	process.exit()
 	    	let a = 1 / 0
 	    	let b = 'a b c d '.split(' ')
     		log(b[-1])
     		while (true) {}
-
 	    }
 
 	    return false
