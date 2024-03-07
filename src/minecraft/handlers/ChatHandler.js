@@ -42,6 +42,8 @@ class StateHandler extends EventHandler {
 		
 		if (this.online===false) {
 
+			if (message.endsWith("!"))
+
 			if (message.includes('test123')) {
 					this.bot.chat('/gc sorry for all the fuss i am making')
 			}
@@ -71,6 +73,8 @@ class StateHandler extends EventHandler {
 			else {
 				this.bot.chat('command is not done yet, the dev is kinda stupid 2')
 			}
+			this.bot.chat('command is not done yet, the dev is kinda stupid 2')
+
 
 			if (this.isLobbyJoinMessage(message)) {
 				this.minecraft.app.log.minecraft('Sending Minecraft client to limbo')
