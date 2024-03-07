@@ -5,6 +5,7 @@ class StateHandler extends EventHandler {
 		
 		this.minecraft = minecraft
 		this.command = command
+		this.awaitingPartyVictim = false
 	}
 
 	registerEvents(bot) {
@@ -15,7 +16,6 @@ class StateHandler extends EventHandler {
 		this.bot.on('message', (...args) => this.onMessage(...args))
 
 	}
-	static awaitingPartyVictim = false
 
 	  handleLocalCommand(player, message) {
 	    if (!message.startsWith('!')) {  
@@ -29,13 +29,13 @@ class StateHandler extends EventHandler {
 	        //this.bot.chat('/gc command is not done yet, the dev is kinda stupid')       
 			//this.bot.chat(`/gc ${args[0]}`)
 
-	    	if (awaitingPartyVictim) {
+	    	if (this.awaitingPartyVictim) {
 	    		this.bot.chat('/gc already waiting to warp someone out!')
 	    		return false
 	    	}
 
 	    	this.bot.chat(`/party invite ${args[0]}`)
-	    	awaitingPartyVictim = true
+	    	this.awaitingPartyVictim = true
 
 			return true
 	    }
@@ -79,7 +79,7 @@ class StateHandler extends EventHandler {
 			}
 
 			if (isPartyNotAllowedMessage(message)) {
-				awaitingPartyVictim = false;
+				this.awaitingPartyVictim = false;
 				this.bot.chat('Cannot invite that player');
 			}
 
