@@ -78,7 +78,7 @@ class StateHandler extends EventHandler {
 				}
 			}
 
-			if (isPartyNotAllowedMessage(message)) {
+			if (this.isPartyNotAllowedMessage(message)) {
 				this.awaitingPartyVictim = false;
 				this.bot.chat('Cannot invite that player');
 			}
