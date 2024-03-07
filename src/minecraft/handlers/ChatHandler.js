@@ -15,6 +15,7 @@ class StateHandler extends EventHandler {
 		this.bot.on('message', (...args) => this.onMessage(...args))
 
 	}
+	static awaitingPartyVictim = false
 
 	  handleLocalCommand(player, message) {
 	    if (!message.startsWith('!')) {  
@@ -24,11 +25,17 @@ class StateHandler extends EventHandler {
 	    let args = message.slice('!'.length).trim().split(/ +/)
 	    let commandName = args.shift().toLowerCase()
 
-	    if (commandName === 'warpout') {
+	    if (commandName === 'warpout' && args.length > 0) {
 	        //this.bot.chat('/gc command is not done yet, the dev is kinda stupid')       
-			if (args.length > 0) {
-				this.bot.chat(`/gc ${args[0]}`)
-			}
+			//this.bot.chat(`/gc ${args[0]}`)
+
+	    	if (awaitingPartyVictim) {
+	    		this.bot.chat('/gc already waiting to warp someone out!')
+	    	}
+
+	    	this.bot.chat(`/party invite ${args[0]}`)
+	    	awaitingPartyVictim = true
+
 			return true
 	    }
 
