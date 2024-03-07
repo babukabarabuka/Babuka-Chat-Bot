@@ -46,6 +46,9 @@ class StateHandler extends EventHandler {
 	isPartyNotAllowedMessage(message) {
 		return message.toLowerCase().includes('You cannot invite that player.'.toLowerCase())
 	}
+	isJoinPartyMessage(message) {
+	  return message.endsWith('joined the party.') && !message.includes(':');
+	}
 
 	onMessage(event) {
 		const message = event.toString().trim()
@@ -54,6 +57,14 @@ class StateHandler extends EventHandler {
 
 			if (message.includes('test123')) {
 					this.bot.chat('/gc sorry for all the fuss i am making')
+			}
+			if (message.includes('You cannot invite that player.')) {
+				this.bot.chat('/gc cant, sry')
+				this.awaitingPartyVictim = false
+			}
+			else if (message.includes('You cannot invite that player.')) {
+				this.bot.chat('/gc yaay')
+				this.awaitingPartyVictim = false
 			}
 
 			let parts2 = message.split(':')
