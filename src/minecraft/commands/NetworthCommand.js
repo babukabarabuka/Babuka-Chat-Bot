@@ -44,7 +44,7 @@ class NetworthCommand extends MinecraftCommand {
 			.then(data => {//received minecraft uuid
 				const minecraftId = data.id
 				//profiles
-				fetch('https://api.hypixel.net/v2/skyblock/profiles?uuid=' + minecraftId, extraData)
+				fetch('https://api.hypixel.net/v2/skyblock/profiles?uuid=' + minecraftId, this.extraData)
 					.then(response => {
 						if (response.ok || true) {
 							return response.json(); // Parse the response data as JSON
