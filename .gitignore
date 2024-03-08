@@ -2,5 +2,6 @@
 npm-debug.log
 yarn-error.log
 config.json
+/src/minecraft/commands/apiKey.json
 /.vscode
 .idea
