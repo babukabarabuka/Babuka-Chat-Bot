@@ -102,7 +102,7 @@ class CataCommand extends MinecraftCommand {
 						output += ' - bers ' + this.getCataLevelString(classes.berserk.experience)
 						output += ' - tank ' + this.getCataLevelString(classes.tank.experience)
 						output += ' - heal ' + this.getCataLevelString(classes.healer.experience)
-						output += ' - class average ' + ((this.getCataLevel(classes.mage.experience) + this.getCataLevel(classes.archer.experience) + this.getCataLevel(classes.berserk.experience) + this.getCataLevel(classes.tank.experience) + this.getCataLevel(classes.healer.experience))/5)
+						output += ' - class average ' + ((this.getCataLevel(classes.mage.experience).level + this.getCataLevel(classes.archer.experience).level + this.getCataLevel(classes.berserk.experience).level + this.getCataLevel(classes.tank.experience).level + this.getCataLevel(classes.healer.experience).level)/5)
 
 
 						this.send(output)
