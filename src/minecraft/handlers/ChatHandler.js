@@ -7,6 +7,7 @@ class StateHandler extends EventHandler {
 		this.command = command
 
 		this.awaitingPartyVictim = false
+		this.awaitingIslandVisit = false
 		this.targetName = ''
 		this.dictionary = 'Watermelon Grapefruit Lemon Banana Apple Kiwi Pomegranate Cherry Strawberry Peach Satsuma'.split(' ')
 		this.fruitIndex = 0;
@@ -49,6 +50,7 @@ class StateHandler extends EventHandler {
 			if (args.length === 2 && args[1].includes('reset')) {
 				this.bot.chat('/gc You can warpout another player now ' + this.getRandomFruit())
 				this.awaitingPartyVictim = false
+				this.warpoutCanBeTurnedOff = false
 				return true
 			}
 
@@ -73,6 +75,7 @@ class StateHandler extends EventHandler {
 
 	    	this.warpoutInitializedTime = Date.now()
 	    	this.warpoutCanBeTurnedOff = true
+	    	this.awaitingIslandVisit = false
 
 	    	//while(Date.now()-timeWarped < 100) {
 	    	//	this.bot.chat(`/gc invited ${args[0]}`)
@@ -98,6 +101,9 @@ class StateHandler extends EventHandler {
 	isOfflinePlayerMessage(message) {
 		return message.includes('You cannot invite that player since they\'re not online.') && !message.includes(':')
 	}
+	isVisitingIslandMessage(message) {
+		return message.includes('is visiting Your Island!') && !message.includes(':')
+	}
 
 
 	onMessage(event) {
@@ -114,6 +120,7 @@ class StateHandler extends EventHandler {
 			if (Date.now() - this.warpoutInitializedTime > 62000 && this.warpoutCanBeTurnedOff) {
 				this.awaitingPartyVictim = false
 				this.warpoutCanBeTurnedOff = false
+				this.awaitingIslandVisit = false
 
 				this.bot.chat(`/gc Couldn't warp out ${this.targetName}, they didn't join the party (v2). ` + this.getRandomFruit())
 				setTimeout((param1) => {param1.chat('/lobby')}, 100, this.bot)
@@ -124,18 +131,21 @@ class StateHandler extends EventHandler {
 				setTimeout((param1) => {param1.chat('/lobby')}, 100, this.bot)
 				this.awaitingPartyVictim = false
 				this.warpoutCanBeTurnedOff = false
+				this.awaitingIslandVisit = false
 			}
 			if (this.isPartyExpiredMessage(message)) {
 				this.bot.chat(`/gc Couldn't warp out ${this.targetName}, they didn't join the party. ` + this.getRandomFruit())
 				setTimeout((param1) => {param1.chat('/lobby')}, 100, this.bot)
 				this.awaitingPartyVictim = false
 				this.warpoutCanBeTurnedOff = false
+				this.awaitingIslandVisit = false
 			}
 			if (this.isNoPlayerFoundMessage(message)) {
 				this.bot.chat(`/gc Couldn't find a player named ${this.targetName}. ` + this.getRandomFruit())
 				setTimeout((param1) => {param1.chat('/lobby')}, 100, this.bot)
 				this.awaitingPartyVictim = false
 				this.warpoutCanBeTurnedOff = false
+				this.awaitingIslandVisit = false
 			}
 			if (this.isOfflinePlayerMessage(message)) {
 				//this.bot.chat('/lobby')
@@ -149,18 +159,17 @@ class StateHandler extends EventHandler {
 
 				this.awaitingPartyVictim = false
 				this.warpoutCanBeTurnedOff = false
+				this.awaitingIslandVisit = false
 			}
 
 
 			if (this.isJoinPartyMessage(message)) {
 				this.bot.chat('/p warp')
-
-				//this.timeWarped = Date.now()
-				//this.needsToDisband = true
-
-				//this.awaitingPartyVictim = false
+				this.warpoutCanBeTurnedOff = false
+				this.awaitingIslandVisit = true
 
 
+				/*
 				setTimeout((param1) => {param1.chat('/lobby')}, 200, this.bot)
 
 				setTimeout((param1) => {param1.chat('/p warp')}, 1800, this.bot)
@@ -168,14 +177,17 @@ class StateHandler extends EventHandler {
 
 				setTimeout((param1, param2) => {param1.chat(param2)}, 2300, this.bot, `/gc Successfully warped out ${this.targetName}! ` + this.getRandomFruit())
 				setTimeout((param1) => {param1.awaitingPartyVictim = false}, 2320, this)
+				*/
+			}
+			if (this.isVisitingIslandMessage(message) && this.awaitingIslandVisit && this.awaitingPartyVictim) {
+				this.bot.chat('/lobby')
 
+				setTimeout((param1) => {param1.chat('/p warp')}, 1800, this.bot)
+				setTimeout((param1) => {param1.chat('/p disband')}, 2100, this.bot)
 
-				//setTimeout((param1, param2) => {param1.chat(param2)}, 2300, this.bot, '/gc Successfully warped out user..')
-				//setTimeout((param1, param2) => {param1.chat(param2)}, 2500, this.bot, '/gc Disbanded party..')
-
-				//setTimeout(() => this.sendDisbandMessage(), 100)
-				//var end = Date.now() + 50
-				//while (Date.now() < end) {}
+				setTimeout((param1, param2) => {param1.chat(param2)}, 2300, this.bot, `/gc Successfully warped out ${this.targetName}! ` + this.getRandomFruit())
+				setTimeout((param1) => {param1.awaitingPartyVictim = false}, 2320, this)
+				setTimeout((param1) => {param1.awaitingIslandVisit = false}, 2330, this)
 			}
 
 			let parts2 = message.split(':')
