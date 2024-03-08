@@ -8,7 +8,7 @@ class NetworthCommand extends MinecraftCommand {
 
 		this.name = 'networth'
 		this.aliases = ['nw']
-		this.description = 'Tells you the given player\s networth'
+		this.description = 'Tells you the given player\'s networth'
 		this.apiKey = apiKeyFile.apiKey
 		this.lastUsedTime = 0
 
@@ -64,7 +64,7 @@ class NetworthCommand extends MinecraftCommand {
 						const profileId = activeProfile.profile_id
 
 						//museum
-						fetch('https://api.hypixel.net/v2/skyblock/museum?profile=' + profileId, extraData)
+						fetch('https://api.hypixel.net/v2/skyblock/museum?profile=' + profileId, this.extraData)
 							.then(response => {
 								if (response.ok || true) {
 									return response.json(); // Parse the response data as JSON
