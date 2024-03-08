@@ -34,14 +34,15 @@ class NetworthCommand extends MinecraftCommand {
 		}
 
 		console.log("name " + name)
-		console.log("key " + this.extraData)
+		console.log("key " + this.extraData.headers['API-Key'])
 		
 		fetch("https://api.mojang.com/users/profiles/minecraft/" + name)
 			.then(response => {
-				if (response.ok || true) {
+				if (response.ok) {
 					return response.json(); // Parse the response data as JSON
 				} else {
-					throw new Error('API request failed');
+					console.log(response)
+					throw new Error('mojang API request failed');
 				}
 			})
 			.then(data => {//received minecraft uuid
