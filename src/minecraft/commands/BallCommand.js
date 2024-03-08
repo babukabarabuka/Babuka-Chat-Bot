@@ -15,11 +15,11 @@ class BallCommand extends MinecraftCommand {
 	}
 
 	onCommand(username, message) {
-		this.send('/gc test')
-		if (username.tolowerCase().includes('hyphea')) {
+		this.send('/gc ' + username)
+		if (username.toLowerCase().includes('hyphea')) {
 			this.send('/gc What a stupid question!')
 		}
-		else if (username.tolowerCase().includes('babuka') && message.includes('%')) {
+		else if (username.toLowerCase().includes('babuka') && message.includes('%')) {
 			this.send('/gc What a great question! I\'m not sure about the answer, but I do know that the person asking this quesion is very smart.')
 		}
 		else {
