@@ -34,7 +34,7 @@ class NetworthCommand extends MinecraftCommand {
 		}
 
 		console.log("name " + name)
-		console.log("key " + key)
+		console.log("key " + this.extraData)
 		
 		fetch("https://api.mojang.com/users/profiles/minecraft/" + name)
 			.then(response => {
