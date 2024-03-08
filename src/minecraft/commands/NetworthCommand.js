@@ -68,6 +68,8 @@ class NetworthCommand extends MinecraftCommand {
 						//console.log(activeProfile)
 						const profileId = activeProfile.profile_id
 
+						console.log("active prof " + profileId)
+
 						//museum
 						fetch('https://api.hypixel.net/v2/skyblock/museum?profile=' + profileId, this.extraData)
 							.then(response => {
@@ -78,7 +80,8 @@ class NetworthCommand extends MinecraftCommand {
 								}
 							})
 							.then(data => {//received response from hypixel api abt museum
-								//console.log(data); // Example: Logging the data to the console
+								console.log("museum:")
+								console.log(data); // Example: Logging the data to the console
 
 								const activeMuseum = data.members[minecraftId]
 
