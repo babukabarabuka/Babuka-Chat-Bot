@@ -29,12 +29,12 @@ class NetworthCommand extends MinecraftCommand {
 		let name = username
 		let args = message.split(" ")
 
-		if (args.length > 0) {
+		if (args.length > 0 && message != "") {
 			name = args[1]
 		}
 
 
-		/*
+		
 		fetch("https://api.mojang.com/users/profiles/minecraft/" + name)
 			.then(response => {
 				if (response.ok || true) {
@@ -107,7 +107,7 @@ class NetworthCommand extends MinecraftCommand {
 			.catch(error => {
 				console.error(error); // Example: Logging the error to the console
 			});
-			*/
+			
 
 
 
