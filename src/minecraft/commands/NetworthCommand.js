@@ -33,7 +33,8 @@ class NetworthCommand extends MinecraftCommand {
 			name = args[1]
 		}
 
-
+		console.log("name " + name)
+		console.log("key " + key)
 		
 		fetch("https://api.mojang.com/users/profiles/minecraft/" + name)
 			.then(response => {
@@ -45,6 +46,7 @@ class NetworthCommand extends MinecraftCommand {
 			})
 			.then(data => {//received minecraft uuid
 				const minecraftId = data.id
+				console.log("mc id: " + minecraftId)
 				//profiles
 				fetch('https://api.hypixel.net/v2/skyblock/profiles?uuid=' + minecraftId, this.extraData)
 					.then(response => {
@@ -56,6 +58,7 @@ class NetworthCommand extends MinecraftCommand {
 					})
 					.then(data => {//received response from hypixel api abt profiles
 						//console.log(data); // Example: Logging the data to the console
+						console.log(data)
 						let activeProfile = {}
 						for (var i = 0; i < data.profiles.length; i ++) {
 							if (data.profiles[i].selected) {
@@ -111,7 +114,7 @@ class NetworthCommand extends MinecraftCommand {
 
 
 
-		this.send("/gc test " + name)
+		//this.send("/gc test " + name)
 	}
 }
 
