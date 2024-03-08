@@ -69,8 +69,8 @@ class StateHandler extends EventHandler {
 
 	    	this.awaitingPartyVictim = true
 
-	    	warpoutInitializedTime = Date.now()
-	    	warpoutCanBeTurnedOff = true
+	    	this.warpoutInitializedTime = Date.now()
+	    	this.warpoutCanBeTurnedOff = true
 
 	    	//while(Date.now()-timeWarped < 100) {
 	    	//	this.bot.chat(`/gc invited ${args[0]}`)
@@ -109,7 +109,7 @@ class StateHandler extends EventHandler {
 			}
 			*/
 
-			if (Date.now() - warpoutInitializedTime > 62000 && warpoutCanBeTurnedOff) {
+			if (Date.now() - this.warpoutInitializedTime > 62000 && this.warpoutCanBeTurnedOff) {
 				this.awaitingPartyVictim = false
 				this.warpoutCanBeTurnedOff = false
 
