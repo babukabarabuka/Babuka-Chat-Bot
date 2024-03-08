@@ -18,7 +18,10 @@ class NetworthCommand extends MinecraftCommand {
 		}
 		this.lastUsedTime = Date.now()
 
-		this.send("/gc test " + this.apiKey)
+		let name = username
+
+
+		this.send("/gc test " + message)
 	}
 }
 
