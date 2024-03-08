@@ -15,7 +15,7 @@ class BallCommand extends MinecraftCommand {
 	}
 
 	onCommand(username, message) {
-		this.send('/gc ' + username)
+		//this.send('/gc ' + username)
 		if (username.toLowerCase().includes('hyphea')) {
 			this.send('/gc What a stupid question!')
 		}
