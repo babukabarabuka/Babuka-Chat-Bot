@@ -93,7 +93,9 @@ class CataCommand extends MinecraftCommand {
 						const profileData = profile.members[minecraftId];
 
 						console.log("successful cata?")
-						console.log(profileData.dungeons.dungeon_types.catacombs)
+						console.log(profileData.dungeons.dungeon_types.catacombs.experience)
+						console.log(this.getCataLevel(profileData.dungeons.dungeon_types.catacombs.experience))
+						console.log(this.getCataLevelString(profileData.dungeons.dungeon_types.catacombs.experience))
 
 						let cata = profileData.dungeons.dungeon_types.catacombs.experience
 						let classes = profileData.dungeons.player_classes
