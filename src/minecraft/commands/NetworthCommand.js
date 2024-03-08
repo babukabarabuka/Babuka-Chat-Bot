@@ -29,8 +29,8 @@ class NetworthCommand extends MinecraftCommand {
 		let name = username
 		let args = message.split(" ")
 
-		if (args.length > 0 && message != "") {
-			//name = args[1]
+		if (args.length > 1 && message != "") {
+			name = args[1]
 		}
 
 		console.log("name " + name)
@@ -39,7 +39,7 @@ class NetworthCommand extends MinecraftCommand {
 		console.log("args= " + args)
 		console.log('len ' + args.length)
 		console.log(message)
-		
+
 		
 		fetch("https://api.mojang.com/users/profiles/minecraft/" + name)
 			.then(response => {
@@ -47,6 +47,7 @@ class NetworthCommand extends MinecraftCommand {
 					return response.json(); // Parse the response data as JSON
 				} else {
 					console.log(response)
+					this.send('/gc couldn\'t find a player with that IGN')
 					throw new Error('mojang API request failed');
 				}
 			})
@@ -59,6 +60,8 @@ class NetworthCommand extends MinecraftCommand {
 						if (response.ok) {
 							return response.json(); // Parse the response data as JSON
 						} else {
+							this.send('/gc couldn\'t find a profile')
+							console.log("resp fail profile")
 							console.log(response.json())
 							throw new Error('profiles API request failed');
 						}
@@ -84,6 +87,7 @@ class NetworthCommand extends MinecraftCommand {
 								if (response.ok) {
 									return response.json(); // Parse the response data as JSON
 								} else {
+									this.send('/gc couldn\'t find museum data')
 									console.log(response.json())
 									throw new Error('museum API request failed' )
 								}
