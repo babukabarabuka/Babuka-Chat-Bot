@@ -69,7 +69,7 @@ class NetworthCommand extends MinecraftCommand {
 								if (response.ok || true) {
 									return response.json(); // Parse the response data as JSON
 								} else {
-									throw new Error('API request failed');
+									throw new Error('API request failed' );
 								}
 							})
 							.then(data => {//received response from hypixel api abt museum
