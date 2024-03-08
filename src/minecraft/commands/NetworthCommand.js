@@ -99,7 +99,7 @@ class NetworthCommand extends MinecraftCommand {
 								networth.then(networth => {
 									//console.log(networth.networth)
 									//console.log(activeProfile.cute_name)
-									this.send(`/gc ${name}'s networth on ${activeProfile.cute_name} is ${networth.networth}`)
+									this.send(`/gc ${name}'s networth on ${activeProfile.cute_name} is ${this.toShortenedNumber(networth.networth)}`)
 									
 									console.log("successful nw get")
 								})
@@ -123,6 +123,21 @@ class NetworthCommand extends MinecraftCommand {
 
 
 		//this.send("/gc test " + name)
+	}
+
+
+	toShortenedNumber(bigNumber) {
+		const digits = 100
+		if (bigNumber >= 1000000000) {
+			return ('' + Math.round(bigNumber/1000000000 * digits)/100) + 'b'
+		}
+		if (bigNumber >= 1000000) {
+			return ('' + Math.round(bigNumber/1000000 * digits)/100) + 'm'
+		}
+		if (bigNumber >= 1000) {
+			return ('' + Math.round(bigNumber/1000 * digits)/100) + 'k'
+		}
+		return bigNumber
 	}
 }
 
