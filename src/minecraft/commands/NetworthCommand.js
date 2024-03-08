@@ -30,7 +30,7 @@ class NetworthCommand extends MinecraftCommand {
 		let args = message.split(" ")
 
 		if (args.length > 0 && message != "") {
-			name = args[1]
+			//name = args[1]
 		}
 
 		console.log("name " + name)
