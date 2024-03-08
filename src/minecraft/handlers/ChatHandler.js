@@ -10,6 +10,9 @@ class StateHandler extends EventHandler {
 		this.targetName = ''
 		this.dictionary = 'Watermelon Grapefruit Lemon Banana Apple Kiwi Pomegranate Cherry Strawberry Peach Satsuma'.split(' ')
 		this.fruitIndex = 0;
+
+		this.warpoutInitializedTime = 0
+		this.warpoutCanBeTurnedOff = false
 	}
 
 	registerEvents(bot) {
@@ -66,31 +69,15 @@ class StateHandler extends EventHandler {
 
 	    	this.awaitingPartyVictim = true
 
+	    	warpoutInitializedTime = Date.now()
+	    	warpoutCanBeTurnedOff = true
+
 	    	//while(Date.now()-timeWarped < 100) {
 	    	//	this.bot.chat(`/gc invited ${args[0]}`)
 	    	//}
 
 			return true
 	    }
-	    /*
-	    if (commandName === 'stop') {
-	    	this.bot.chat('/gc o7, imma stop')
-	    	//process.exit()
-	    	//let a = 1 / 0
-	    	//let b = 'a b c d '.split(' ')
-    		//log(b[-1])
-    		while (true) {}
-	    }
-		if (commandName === 'reboot') {
-	    	this.bot.chat('/gc o7, imma reboot')
-	    	process.exit()
-	    	let a = 1 / 0
-	    	let b = 'a b c d '.split(' ')
-    		log(b[-1])
-    		while (true) {}
-	    }
-	    */
-
 	    return false
 	  }
 
@@ -110,17 +97,25 @@ class StateHandler extends EventHandler {
 		return message.includes('You cannot invite that player since they\'re not online.') && !message.includes(':')
 	}
 
-	//function testFunc = (firstParam) => {
-	//	firstParam.chat('/p disband')
-	//}
 
 	onMessage(event) {
 		const message = event.toString().trim()
 		
 		if (this.online===false) {
 
+			/*
 			if (message.includes('test123')) {
 					this.bot.chat('/gc sorry for all the fuss i am making. ' + this.getRandomFruit())
+			}
+			*/
+
+			if (Date.now() - warpoutInitializedTime > 62000 && warpoutCanBeTurnedOff) {
+				this.awaitingPartyVictim = false
+				this.warpoutCanBeTurnedOff = false
+
+				this.bot.chat(`/gc Couldn't warp out ${this.targetName}, they didn't join the party (v2). ` + this.getRandomFruit())
+				setTimeout((param1) => {param1.chat('/lobby')}, 100, this.bot)
+				setTimeout((param1) => {param1.chat('/p disband')}, 300, this.bot)
 			}
 			if (this.isPartyNotAllowedMessage(message)) {
 				this.bot.chat('/gc Cannot invite that player, they have turned party invites off. ' + this.getRandomFruit())

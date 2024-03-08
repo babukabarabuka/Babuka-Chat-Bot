@@ -17,13 +17,13 @@ class BallCommand extends MinecraftCommand {
 	onCommand(username, message) {
 		//this.send('/gc ' + username)
 		if (username.toLowerCase().includes('hyphea')) {
-			this.send('/gc What a stupid question!')
+			this.send('/gc 8ball: What a stupid question!')
 		}
 		else if (username.toLowerCase().includes('babuka') && message.includes('%')) {
-			this.send('/gc What a great question! I\'m not sure about the answer, but I do know that the person asking this quesion is very smart.')
+			this.send('/gc 8ball: What a great question! I\'m not sure about the answer, but I do know that the person asking this quesion is very smart.')
 		}
 		else {
-			this.send(`/gc ${this.ballAnswers[this.getRandomInt(this.ballAnswers.length)]}`)
+			this.send(`/gc 8ball: ${this.ballAnswers[this.getRandomInt(this.ballAnswers.length)]}`)
 		}
 	}
 }
