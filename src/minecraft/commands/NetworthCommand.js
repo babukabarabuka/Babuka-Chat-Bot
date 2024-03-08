@@ -35,6 +35,8 @@ class NetworthCommand extends MinecraftCommand {
 
 		console.log("name " + name)
 		console.log("key " + this.extraData.headers['API-Key'])
+
+		this.send("args= " + args)
 		
 		fetch("https://api.mojang.com/users/profiles/minecraft/" + name)
 			.then(response => {
