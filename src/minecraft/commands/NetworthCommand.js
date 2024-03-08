@@ -33,6 +33,8 @@ class NetworthCommand extends MinecraftCommand {
 			name = args[1]
 		}
 
+
+		/*
 		fetch("https://api.mojang.com/users/profiles/minecraft/" + name)
 			.then(response => {
 				if (response.ok || true) {
@@ -105,10 +107,11 @@ class NetworthCommand extends MinecraftCommand {
 			.catch(error => {
 				console.error(error); // Example: Logging the error to the console
 			});
+			*/
 
 
 
-		this.send("/gc test " + message)
+		this.send("/gc test " + name)
 	}
 }
 
