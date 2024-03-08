@@ -3,5 +3,8 @@ npm-debug.log
 yarn-error.log
 config.json
 /src/minecraft/commands/apiKey.json
+.DS_STORE
+src/.DS_STORE
+src/minecraft/.DS_STORE
 /.vscode
 .idea
