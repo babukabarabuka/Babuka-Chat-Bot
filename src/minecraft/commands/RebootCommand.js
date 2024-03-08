@@ -10,7 +10,7 @@ class RebootCommand extends MinecraftCommand {
   }
 
   onCommand(username, message) {
-        this.bot.chat('/gc o7, imma reboot')
+        this.send('/gc o7, imma reboot')
         process.exit()
         let a = 1 / 0
         let b = 'a b c d '.split(' ')

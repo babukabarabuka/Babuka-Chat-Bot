@@ -10,7 +10,7 @@ class StopCommand extends MinecraftCommand {
 	}
 
 	onCommand(username, message) {
-		this.bot.chat('/gc o7, imma stop')
+		this.send('/gc o7, imma stop')
 		while (true) {}
 	}
 }
