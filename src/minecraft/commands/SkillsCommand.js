@@ -95,7 +95,15 @@ class SkillsCommand extends MinecraftCommand {
 						let levels = profileData.player_data.experience
 
 						let output = `/gc ${name}\'s skills: Fishing `+ this.getSkillLevelString(levels.SKILL_FISHING, 50)
-						output += '[] Combat ' + this.getSkillLevelString(levels.SKILL_COMBAT, 60)
+						output += ' - Combat ' + this.getSkillLevelString(levels.SKILL_COMBAT, 60)
+						output += ' - Farming ' + this.getSkillLevelString(levels.SKILL_FARMING, 60)
+						output += ' - Mining ' + this.getSkillLevelString(levels.SKILL_MINING, 60)
+						output += ' - Alchemy ' + this.getSkillLevelString(levels.SKILL_ALCHEMY, 50)
+						output += ' - Enchanting ' + this.getSkillLevelString(levels.SKILL_ENCHANTING, 60)
+						output += ' - Taming ' + this.getSkillLevelString(levels.SKILL_TAMING, 60)
+						output += ' - Foraging ' + this.getSkillLevelString(levels.SKILL_FORAGING, 50)
+						output += ' - Carpentry ' + this.getSkillLevelString(levels.SKILL_CARPENTRY, 50)
+
 
 						this.send(output)
 					
