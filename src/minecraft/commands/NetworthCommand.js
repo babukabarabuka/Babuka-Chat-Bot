@@ -60,7 +60,8 @@ class NetworthCommand extends MinecraftCommand {
 					})
 					.then(data => {//received response from hypixel api abt profiles
 						//console.log(data); // Example: Logging the data to the console
-						console.log(data)
+						console.log("got prof data")
+						//console.log(data)
 						let activeProfile = {}
 						for (var i = 0; i < data.profiles.length; i ++) {
 							if (data.profiles[i].selected) {
@@ -84,7 +85,7 @@ class NetworthCommand extends MinecraftCommand {
 							})
 							.then(data => {//received response from hypixel api abt museum
 								console.log("museum:")
-								console.log(data); // Example: Logging the data to the console
+								//console.log(data); // Example: Logging the data to the console
 
 								const activeMuseum = data.members[minecraftId]
 
@@ -98,8 +99,9 @@ class NetworthCommand extends MinecraftCommand {
 								networth.then(networth => {
 									//console.log(networth.networth)
 									//console.log(activeProfile.cute_name)
-									this.send(`${name}'s networth on ${activeProfile.cute_name} is ${networth.networth}`)
-									console.log(networth)
+									this.send(`/gc ${name}'s networth on ${activeProfile.cute_name} is ${networth.networth}`)
+									
+									console.log("successful nw get")
 								})
 
 
