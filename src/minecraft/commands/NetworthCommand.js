@@ -21,7 +21,8 @@ class NetworthCommand extends MinecraftCommand {
 	}
 
 	onCommand(username, message) {
-		if (Date.now() - this.lastUsedTime < 1000) {
+		if (Date.now() - this.lastUsedTime < 2000) {
+			this.send('/gc please wait')
 			return
 		}
 		this.lastUsedTime = Date.now()
