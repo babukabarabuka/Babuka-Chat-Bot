@@ -10,9 +10,12 @@ class StopCommand extends MinecraftCommand {
 	}
 
 	onCommand(username, message) {
-		if (username.toLowerCase().includes('hyphea') || username.toLowerCase.includes('babuka')) {
+		if (username.toLowerCase().includes('hyphea') || username.toLowerCase().includes('babuka')) {
 			this.send('/gc o7, imma stop')
 			while (true) {}
+		}
+		else {
+			this.send('/gc you don\'t have permission')
 		}
 	}
 }
