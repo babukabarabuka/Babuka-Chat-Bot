@@ -13,11 +13,11 @@ class NetworthCommand extends MinecraftCommand {
 	}
 
 	onCommand(username, message) {
-		if (Date.now() - lastUsedTime < 1000) {
+		if (Date.now() - this.lastUsedTime < 1000) {
 			return
 		}
-		lastUsedTime = Date.now()
-		
+		this.lastUsedTime = Date.now()
+
 		this.send("/gc test " + apiKey)
 	}
 }
