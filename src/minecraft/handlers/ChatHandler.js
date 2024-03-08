@@ -395,10 +395,11 @@ class StateHandler extends EventHandler {
 				let rawdata = fs.readFileSync('config.json');
 				let config = JSON.parse(rawdata);
 
+				let user;
 				if (message.includes("[VIP]") || message.includes("[VIP+]") || message.includes("[MVP]") || message.includes("[MVP+]") || message.includes("[MVP++]")) {
-					let user = message.split(' ')[1];
+					user = message.split(' ')[1];
 				} else {
-					let user = message.split(' ')[0];
+					user = message.split(' ')[0];
 				}
 				user = user.replace('-----------------------------------------------------', '')
 				user = user.replace('\n', '')
