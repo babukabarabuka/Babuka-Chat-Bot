@@ -1,18 +1,18 @@
 const MinecraftCommand = require('../../contracts/MinecraftCommand')
 
 class StopCommand extends MinecraftCommand {
-  constructor(minecraft) {
-    super(minecraft)
+	constructor(minecraft) {
+		super(minecraft)
 
-    this.name = 'stop'
-    this.aliases = []
-    this.description = 'Crashes the Bot'
-  }
+		this.name = 'stop'
+		this.aliases = []
+		this.description = 'Stops the Bot'
+	}
 
-  onCommand(username, message) {
-    let a = 1 / 0
-    while (true) {}
-  }
+	onCommand(username, message) {
+		this.bot.chat('/gc o7, imma stop')
+		while (true) {}
+	}
 }
 
 module.exports = StopCommand

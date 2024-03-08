@@ -72,6 +72,7 @@ class StateHandler extends EventHandler {
 
 			return true
 	    }
+	    /*
 	    if (commandName === 'stop') {
 	    	this.bot.chat('/gc o7, imma stop')
 	    	//process.exit()
@@ -88,6 +89,7 @@ class StateHandler extends EventHandler {
     		log(b[-1])
     		while (true) {}
 	    }
+	    */
 
 	    return false
 	  }
