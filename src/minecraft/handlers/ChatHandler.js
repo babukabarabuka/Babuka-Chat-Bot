@@ -121,16 +121,19 @@ class StateHandler extends EventHandler {
 				this.bot.chat('/gc Cannot invite that player, they have turned party invites off. ' + this.getRandomFruit())
 				setTimeout((param1) => {param1.chat('/lobby')}, 100, this.bot)
 				this.awaitingPartyVictim = false
+				this.warpoutCanBeTurnedOff = false
 			}
 			if (this.isPartyExpiredMessage(message)) {
 				this.bot.chat(`/gc Couldn't warp out ${this.targetName}, they didn't join the party. ` + this.getRandomFruit())
 				setTimeout((param1) => {param1.chat('/lobby')}, 100, this.bot)
 				this.awaitingPartyVictim = false
+				this.warpoutCanBeTurnedOff = false
 			}
 			if (this.isNoPlayerFoundMessage(message)) {
 				this.bot.chat(`/gc Couldn't find a player named ${this.targetName}. ` + this.getRandomFruit())
 				setTimeout((param1) => {param1.chat('/lobby')}, 100, this.bot)
 				this.awaitingPartyVictim = false
+				this.warpoutCanBeTurnedOff = false
 			}
 			if (this.isOfflinePlayerMessage(message)) {
 				//this.bot.chat('/lobby')
@@ -143,6 +146,7 @@ class StateHandler extends EventHandler {
 
 
 				this.awaitingPartyVictim = false
+				this.warpoutCanBeTurnedOff = false
 			}
 
 
