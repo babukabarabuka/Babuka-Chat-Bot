@@ -18,7 +18,7 @@ class NetworthCommand extends MinecraftCommand {
 		}
 		this.lastUsedTime = Date.now()
 
-		this.send("/gc test " + apiKey)
+		this.send("/gc test " + this.apiKey)
 	}
 }
 
