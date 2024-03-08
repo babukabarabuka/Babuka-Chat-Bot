@@ -94,8 +94,8 @@ class SkillsCommand extends MinecraftCommand {
 
 						let levels = profileData.player_data.experience
 
-						let output = `/gc ${name}\'s skills: Fishing `+ getSkillLevelString(levels.SKILL_FISHING, 50)
-						output += '[] Combat ' + getSkillLevelString(levels.SKILL_COMBAT, 60)
+						let output = `/gc ${name}\'s skills: Fishing `+ this.getSkillLevelString(levels.SKILL_FISHING, 50)
+						output += '[] Combat ' + this.getSkillLevelString(levels.SKILL_COMBAT, 60)
 
 						this.send(output)
 					
@@ -160,7 +160,7 @@ class SkillsCommand extends MinecraftCommand {
 
 		let out = '' + skill.level
 		if (skill.overflow > 0) {
-			out += '+' + toShortenedNumber(skill.overflow)
+			out += '+' + this.toShortenedNumber(skill.overflow)
 		}
 		return out
 	}
