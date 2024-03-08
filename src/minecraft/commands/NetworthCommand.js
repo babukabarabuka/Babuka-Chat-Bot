@@ -51,10 +51,11 @@ class NetworthCommand extends MinecraftCommand {
 				//profiles
 				fetch('https://api.hypixel.net/v2/skyblock/profiles?uuid=' + minecraftId, this.extraData)
 					.then(response => {
-						if (response.ok || true) {
+						if (response.ok) {
 							return response.json(); // Parse the response data as JSON
 						} else {
-							throw new Error('API request failed');
+							console.log(response.json())
+							throw new Error('profiles API request failed');
 						}
 					})
 					.then(data => {//received response from hypixel api abt profiles
@@ -74,10 +75,11 @@ class NetworthCommand extends MinecraftCommand {
 						//museum
 						fetch('https://api.hypixel.net/v2/skyblock/museum?profile=' + profileId, this.extraData)
 							.then(response => {
-								if (response.ok || true) {
+								if (response.ok) {
 									return response.json(); // Parse the response data as JSON
 								} else {
-									throw new Error('API request failed' );
+									console.log(response.json())
+									throw new Error('museum API request failed' )
 								}
 							})
 							.then(data => {//received response from hypixel api abt museum
@@ -97,7 +99,7 @@ class NetworthCommand extends MinecraftCommand {
 									//console.log(networth.networth)
 									//console.log(activeProfile.cute_name)
 									this.send(`${name}'s networth on ${activeProfile.cute_name} is ${networth.networth}`)
-
+									console.log(networth)
 								})
 
 
