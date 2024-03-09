@@ -54,14 +54,14 @@ class CommandHandler {
 
   isCommander(member) {
     console.log("mem roles")
-    console.log(memer.roles.cache)
+    console.log(member.roles.cache)
     console.log(this.discord.app.config.discord.commandRole)
     return member.roles.cache.find(r => r.id == this.discord.app.config.discord.commandRole)
   }
 
   isOwner(member) {
     console.log("mem id")
-    console.log(memer.id)
+    console.log(member.id)
     console.log(this.discord.app.config.discord.ownerId)
     return member.id == this.discord.app.config.discord.ownerId
   }
