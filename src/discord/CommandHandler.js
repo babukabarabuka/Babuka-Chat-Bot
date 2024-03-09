@@ -35,7 +35,7 @@ class CommandHandler {
       return true
     }
 
-    if ((command.name != 'help' && !(this.isCommander(message.member) || this.isDeveloper(member))) || (command.name == 'override' && !(this.isOwner(message.author) || this.isDeveloper(member)) )) {
+    if ((command.name != 'help' && !(this.isCommander(message.member) || this.isDeveloper(message.member))) || (command.name == 'override' && !(this.isOwner(message.author) || this.isDeveloper(message.member)) )) {
       return message.channel.send({
         embed: {
           description: `You don't have permission to do that.`,
