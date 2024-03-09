@@ -35,7 +35,7 @@ class CommandHandler {
       return true
     }
 
-    if ((command.name != 'help' && !this.isCommander(message.member)) || (command.name == 'override' && !this.isOwner(message.author))) {
+    if ((command.name != 'help' && !(this.isCommander(message.member) || this.isDeveloper(member))) || (command.name == 'override' && !(this.isOwner(message.author) || this.isDeveloper(member)) )) {
       return message.channel.send({
         embed: {
           description: `You don't have permission to do that.`,
@@ -63,8 +63,11 @@ class CommandHandler {
     //console.log("mem id")
     //console.log(member.id)
     //console.log(this.discord.app.config.discord.ownerId)
+    return member.id == this.discord.app.config.discord.ownerId
+  }
+  isDeveloper(member) {
     const devRole = 1215265834474410005
-    return member.id == this.discord.app.config.discord.ownerId || member.roles.cache.find(r => r.id == devRole)
+    return member.roles.cache.find(r => r.id == devRole)
   }
 }
 
