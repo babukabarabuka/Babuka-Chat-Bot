@@ -188,7 +188,7 @@ class StateHandler extends EventHandler {
 				setTimeout((param1) => {param1.chat('/lobby')}, 800, this.bot)//was 0
 
 				setTimeout((param1) => {param1.chat('/p warp')}, 1800, this.bot)//was 1800 and 2100 for disband
-				setTimeout((param1) => {param1.chat('/p disband')}, 211, this.bot)
+				setTimeout((param1) => {param1.chat('/p disband')}, 2100, this.bot)
 
 				setTimeout((param1, param2) => {param1.chat(param2)}, 2300, this.bot, `/gc Successfully warped out ${this.targetName}! ` + this.getRandomFruit())
 				setTimeout((param1) => {param1.awaitingPartyVictim = false}, 2320, this)
