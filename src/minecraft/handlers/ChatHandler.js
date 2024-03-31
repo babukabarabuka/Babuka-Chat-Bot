@@ -47,13 +47,13 @@ class StateHandler extends EventHandler {
 	    if (commandName === 'warpout' && args.length > 0) {
 	        //this.bot.chat('/gc command is not done yet, the dev is kinda stupid')       
 			//this.bot.chat(`/gc ${args[0]}`)
-			if (args.length === 2 && args[0].includes('reset')) {
+			if (args.length === 1 && args[0].includes('reset')) {
 				this.bot.chat('/gc You can warpout another player now ' + this.getRandomFruit())
 				this.awaitingPartyVictim = false
 				this.warpoutCanBeTurnedOff = false
 				return true
 			}
-			if (args.length === 2 && args[0].includes('help')) {
+			if (args.length === 1 && args[0].includes('help')) {
 				this.bot.chat('/gc Do "!warpout reset" to stop waiting for a player, and warp out another' + this.getRandomFruit())
 				return true
 			}
