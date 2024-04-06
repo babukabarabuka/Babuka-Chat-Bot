@@ -54,7 +54,7 @@ class StateHandler extends EventHandler {
 				return true
 			}
 			if (args.length >= 1 && args[0].includes('help')) {
-				this.bot.chat('/gc Do "!warpout reset" to stop waiting for a player, and warp out another' + this.getRandomFruit())
+				this.bot.chat('/gc Do "!warpout reset" to stop waiting for a player, and warp out another ' + this.getRandomFruit())
 				return true
 			}
 
